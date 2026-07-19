@@ -38,7 +38,9 @@
     background: var(--bg); color: var(--ink); line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
-  img { display: block; max-width: 100%; }
+  /* height:auto is REQUIRED: images carry width/height attributes (layout
+     hints), and without it max-width shrinks only the width — stretch. */
+  img { display: block; max-width: 100%; height: auto; }
   a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
 
