@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SoldFor — Resale Profit Tracker</title>
+<meta name="description" content="SoldFor is the ledger for your reselling side hustle. Track what you buy, mark it sold, and see what you actually made — synced privately with iCloud.">
+<style>
+  :root {
+    --sky-top: #57B5FF;
+    --sky-bottom: #1673E1;
+    --accent: #1673E1;
+    --profit: #1e9e63;
+    --ink: #1c1c1e;
+    --ink-2: #6e6e73;
+    --bg: #f5f5f7;
+    --card: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --accent: #5CA8FF;
+      --profit: #4cc38a;
+      --ink: #f5f5f7;
+      --ink-2: #a1a1a6;
+      --bg: #000000;
+      --card: #1c1c1e;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+    background: var(--bg); color: var(--ink); line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .hero {
+    background: linear-gradient(160deg, var(--sky-top), var(--sky-bottom));
+    color: #fff; text-align: center; padding: 72px 24px 64px;
+  }
+  .tag {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 88px; height: 88px; border-radius: 22px;
+    background: rgba(255,255,255,0.18); font-size: 44px; margin-bottom: 20px;
+  }
+  .hero h1 { font-size: 44px; font-weight: 800; letter-spacing: -0.5px; }
+  .hero p.tagline { font-size: 20px; margin-top: 10px; opacity: 0.94; max-width: 560px; margin-left: auto; margin-right: auto; }
+  main { max-width: 720px; margin: 0 auto; padding: 40px 24px 24px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-top: -46px; }
+  .card {
+    background: var(--card); border-radius: 18px; padding: 22px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+  }
+  .card h3 { font-size: 17px; margin-bottom: 6px; }
+  .card p { font-size: 15px; color: var(--ink-2); }
+  .card .emoji { font-size: 26px; display: block; margin-bottom: 10px; }
+  section { margin-top: 44px; }
+  h2 { font-size: 26px; font-weight: 700; margin-bottom: 12px; }
+  section p { color: var(--ink-2); font-size: 16px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .support-box {
+    background: var(--card); border-radius: 18px; padding: 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06); margin-top: 16px;
+  }
+  .support-box p + p { margin-top: 8px; }
+  footer {
+    text-align: center; padding: 36px 24px 48px; color: var(--ink-2); font-size: 14px;
+  }
+  footer a { margin: 0 8px; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="tag" aria-hidden="true">🏷️</div>
+  <h1>SoldFor</h1>
+  <p class="tagline">The ledger for your reselling side hustle. Buy. Sell. Know your profit.</p>
+</div>
+
+<main>
+  <div class="cards">
+    <div class="card">
+      <span class="emoji">📦</span>
+      <h3>Track every item</h3>
+      <p>Photos, costs, fees and platforms for everything you buy — searchable and sortable.</p>
+    </div>
+    <div class="card">
+      <span class="emoji">💰</span>
+      <h3>Mark it sold</h3>
+      <p>One tap records the sale with a live profit preview — after every fee.</p>
+    </div>
+    <div class="card">
+      <span class="emoji">📊</span>
+      <h3>Know your numbers</h3>
+      <p>Monthly summaries, growth charts, top products and sell-through — all tappable.</p>
+    </div>
+    <div class="card">
+      <span class="emoji">☁️</span>
+      <h3>Private by design</h3>
+      <p>Everything syncs through your own iCloud. No account, no ads, no tracking.</p>
+    </div>
+  </div>
+
+  <section id="support">
+    <h2>Support</h2>
+    <div class="support-box">
+      <p>Questions, feedback or trouble with SoldFor? Get in touch and we'll get back to you promptly.</p>
+      <p>📮 Email: <a href="mailto:admin@autotrader.co.nz">admin@autotrader.co.nz</a></p>
+      <p>Your data lives in your own iCloud — if something looks out of sync, check
+      Settings&nbsp;→&nbsp;Apple&nbsp;ID&nbsp;→&nbsp;iCloud on each device, then open the app's
+      Manage tab to watch sync status.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>
+    <a href="privacy.html">Privacy Policy</a> ·
+    <a href="mailto:admin@autotrader.co.nz">Contact</a>
+  </p>
+  <p style="margin-top:8px">© 2026 Yuan Fu. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
