@@ -3,8 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SoldFor — Resale Profit Tracker</title>
-<meta name="description" content="SoldFor is the ledger for your reselling side hustle. Track what you buy, mark it sold, and see what you actually made — synced privately with iCloud.">
+<title>SoldFor — Resale Profit Tracker for iPhone & iPad</title>
+<meta name="description" content="SoldFor is the ledger for your reselling side hustle. Track what you buy, mark it sold, and see what you actually made — after every fee. Synced privately with iCloud.">
+<meta property="og:title" content="SoldFor — Resale Profit Tracker">
+<meta property="og:description" content="Buy. Sell. Know your profit. The ledger for your reselling side hustle.">
+<meta property="og:image" content="https://mrfufufu.github.io/soldfor/img/library.jpg">
 <style>
   :root {
     --sky-top: #57B5FF;
@@ -15,6 +18,7 @@
     --ink-2: #6e6e73;
     --bg: #f5f5f7;
     --card: #ffffff;
+    --frame: #16181c;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -24,46 +28,140 @@
       --ink-2: #a1a1a6;
       --bg: #000000;
       --card: #1c1c1e;
+      --frame: #3a3a3c;
     }
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
     background: var(--bg); color: var(--ink); line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
+  img { display: block; max-width: 100%; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ---- Hero ---- */
   .hero {
     background: linear-gradient(160deg, var(--sky-top), var(--sky-bottom));
-    color: #fff; text-align: center; padding: 72px 24px 64px;
+    color: #fff; text-align: center; padding: 72px 24px 0;
+    overflow: hidden;
   }
   .tag {
     display: inline-flex; align-items: center; justify-content: center;
-    width: 88px; height: 88px; border-radius: 22px;
-    background: rgba(255,255,255,0.18); font-size: 44px; margin-bottom: 20px;
+    width: 84px; height: 84px; border-radius: 21px;
+    background: rgba(255,255,255,0.18); font-size: 42px; margin-bottom: 18px;
   }
-  .hero h1 { font-size: 44px; font-weight: 800; letter-spacing: -0.5px; }
-  .hero p.tagline { font-size: 20px; margin-top: 10px; opacity: 0.94; max-width: 560px; margin-left: auto; margin-right: auto; }
-  main { max-width: 720px; margin: 0 auto; padding: 40px 24px 24px; }
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-top: -46px; }
-  .card {
+  .hero h1 { font-size: 48px; font-weight: 800; letter-spacing: -0.5px; }
+  .hero p.tagline {
+    font-size: 21px; margin-top: 10px; opacity: 0.95;
+    max-width: 620px; margin-left: auto; margin-right: auto;
+  }
+  .hero .meta { margin-top: 14px; font-size: 15px; opacity: 0.85; }
+  .store-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 22px; padding: 11px 22px; border-radius: 999px;
+    background: rgba(0,0,0,0.28); color: #fff; font-weight: 600; font-size: 15px;
+  }
+  .hero-phone {
+    width: min(310px, 78vw); margin: 44px auto -120px;
+  }
+
+  /* ---- Phone frame ---- */
+  .phone {
+    border: 9px solid var(--frame); border-radius: 44px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.30);
+    overflow: hidden; background: var(--frame);
+  }
+  .phone img { border-radius: 34px; }
+
+  /* ---- Layout ---- */
+  main { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  .spacer-for-hero { height: 150px; }
+
+  .quartet {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 14px; margin-top: 26px;
+  }
+  .mini-card {
     background: var(--card); border-radius: 18px; padding: 22px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
   }
-  .card h3 { font-size: 17px; margin-bottom: 6px; }
-  .card p { font-size: 15px; color: var(--ink-2); }
-  .card .emoji { font-size: 26px; display: block; margin-bottom: 10px; }
-  section { margin-top: 44px; }
-  h2 { font-size: 26px; font-weight: 700; margin-bottom: 12px; }
-  section p { color: var(--ink-2); font-size: 16px; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .support-box {
-    background: var(--card); border-radius: 18px; padding: 24px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.06); margin-top: 16px;
+  .mini-card .emoji { font-size: 26px; display: block; margin-bottom: 10px; }
+  .mini-card h3 { font-size: 17px; margin-bottom: 6px; }
+  .mini-card p { font-size: 15px; color: var(--ink-2); }
+
+  /* ---- Alternating feature rows ---- */
+  .feature {
+    display: flex; align-items: center; gap: 52px;
+    margin-top: 88px;
   }
-  .support-box p + p { margin-top: 8px; }
+  .feature:nth-of-type(even) { flex-direction: row-reverse; }
+  .feature .copy { flex: 1; }
+  .feature .shot { flex: 0 0 285px; }
+  .feature .kicker {
+    font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+  }
+  .feature h2 { font-size: 30px; font-weight: 800; letter-spacing: -0.3px; line-height: 1.25; }
+  .feature p { margin-top: 12px; font-size: 17px; color: var(--ink-2); }
+  .feature ul { margin: 14px 0 0 2px; list-style: none; }
+  .feature li {
+    font-size: 16px; color: var(--ink-2); padding-left: 26px;
+    position: relative; margin-top: 8px;
+  }
+  .feature li::before {
+    content: "✓"; position: absolute; left: 0; top: 0;
+    color: var(--profit); font-weight: 700;
+  }
+  @media (max-width: 720px) {
+    .feature, .feature:nth-of-type(even) { flex-direction: column; gap: 30px; margin-top: 64px; }
+    .feature .shot { flex: none; width: min(280px, 80vw); }
+    .feature h2 { font-size: 26px; }
+  }
+
+  /* ---- iPad band ---- */
+  .ipad-band {
+    margin-top: 96px; background: var(--card); border-radius: 26px;
+    padding: 44px 44px 0; text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); overflow: hidden;
+  }
+  .ipad-band h2 { font-size: 30px; font-weight: 800; }
+  .ipad-band p { color: var(--ink-2); font-size: 17px; margin-top: 10px; max-width: 560px; margin-left: auto; margin-right: auto; }
+  .ipad-band img {
+    margin: 34px auto -6px; width: min(680px, 100%);
+    border-radius: 22px 22px 0 0; border: 8px solid var(--frame); border-bottom: none;
+    box-shadow: 0 18px 44px rgba(0,0,0,0.22);
+  }
+
+  /* ---- Privacy band ---- */
+  .privacy-band {
+    margin-top: 96px; border-radius: 26px; padding: 44px;
+    background: linear-gradient(160deg, #20262e, #0e1116); color: #f5f5f7;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  }
+  .privacy-band h2 { font-size: 30px; font-weight: 800; }
+  .privacy-band > p { margin-top: 10px; font-size: 17px; color: #b7bcc4; max-width: 640px; }
+  .privacy-points { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 22px; margin-top: 28px; }
+  .privacy-points h3 { font-size: 16px; margin-bottom: 4px; }
+  .privacy-points p { font-size: 14.5px; color: #b7bcc4; }
+  .privacy-points .emoji { font-size: 24px; display: block; margin-bottom: 8px; }
+  .privacy-band a { color: #8fc2ff; }
+
+  /* ---- Support ---- */
+  .support { margin-top: 96px; text-align: center; }
+  .support h2 { font-size: 30px; font-weight: 800; }
+  .support p { color: var(--ink-2); font-size: 17px; margin-top: 10px; }
+  .support .mail {
+    display: inline-block; margin-top: 18px; padding: 13px 26px;
+    background: var(--accent); color: #fff; font-weight: 600;
+    border-radius: 999px; font-size: 16px;
+  }
+  .support .mail:hover { text-decoration: none; opacity: 0.92; }
+
   footer {
-    text-align: center; padding: 36px 24px 48px; color: var(--ink-2); font-size: 14px;
+    text-align: center; padding: 72px 24px 52px; color: var(--ink-2); font-size: 14px;
   }
   footer a { margin: 0 8px; }
 </style>
@@ -73,42 +171,173 @@
 <div class="hero">
   <div class="tag" aria-hidden="true">🏷️</div>
   <h1>SoldFor</h1>
-  <p class="tagline">The ledger for your reselling side hustle. Buy. Sell. Know your profit.</p>
+  <p class="tagline">The ledger for your reselling side hustle.<br>Buy. Sell. Know your profit.</p>
+  <p class="meta">For iPhone &amp; iPad · Private iCloud sync · No accounts, no ads</p>
+  <div class="store-pill">📱 Coming soon to the App&nbsp;Store</div>
+  <div class="hero-phone phone">
+    <img src="img/library.jpg" width="720" height="1564"
+         alt="SoldFor Library screen: a grid of product cards with prices, statuses and profit chips, topped by a monthly profit summary card">
+  </div>
 </div>
 
 <main>
-  <div class="cards">
-    <div class="card">
+  <div class="spacer-for-hero"></div>
+
+  <div class="quartet">
+    <div class="mini-card">
       <span class="emoji">📦</span>
       <h3>Track every item</h3>
       <p>Photos, costs, fees and platforms for everything you buy — searchable and sortable.</p>
     </div>
-    <div class="card">
+    <div class="mini-card">
       <span class="emoji">💰</span>
       <h3>Mark it sold</h3>
       <p>One tap records the sale with a live profit preview — after every fee.</p>
     </div>
-    <div class="card">
+    <div class="mini-card">
       <span class="emoji">📊</span>
       <h3>Know your numbers</h3>
       <p>Monthly summaries, growth charts, top products and sell-through — all tappable.</p>
     </div>
-    <div class="card">
+    <div class="mini-card">
       <span class="emoji">☁️</span>
       <h3>Private by design</h3>
       <p>Everything syncs through your own iCloud. No account, no ads, no tracking.</p>
     </div>
   </div>
 
-  <section id="support">
-    <h2>Support</h2>
-    <div class="support-box">
-      <p>Questions, feedback or trouble with SoldFor? Get in touch and we'll get back to you promptly.</p>
-      <p>📮 Email: <a href="mailto:yuan@633933.xyz">yuan@633933.xyz</a></p>
-      <p>Your data lives in your own iCloud — if something looks out of sync, check
-      Settings&nbsp;→&nbsp;Apple&nbsp;ID&nbsp;→&nbsp;iCloud on each device, then open the app's
-      Manage tab to watch sync status.</p>
+  <section class="feature">
+    <div class="copy">
+      <div class="kicker">Sell</div>
+      <h2>From “in stock” to “sold” in one tap</h2>
+      <p>Open an item, tap <strong>Mark as Sold</strong>, type the price — SoldFor
+      shows the profit you'll clear before you confirm, with platform fees and
+      extra costs accounted for.</p>
+      <ul>
+        <li>Live profit preview as you type</li>
+        <li>Sale platform, fees and GST recorded per sale</li>
+        <li>Status flips to Sold automatically</li>
+      </ul>
     </div>
+    <div class="shot phone">
+      <img loading="lazy" src="img/sell.jpg" width="720" height="1564"
+           alt="Product detail screen for an unsold item showing the invested amount and a prominent Mark as Sold button">
+    </div>
+  </section>
+
+  <section class="feature">
+    <div class="copy">
+      <div class="kicker">Profit</div>
+      <h2>Know exactly what you made</h2>
+      <p>Every sold item tells its money story: revenue, cost, profit and ROI up
+      top, then a full history ledger — what you paid, what it sold for, and
+      every fee along the way.</p>
+      <ul>
+        <li>Profit and ROI at a glance</li>
+        <li>Complete buy → sell ledger per item</li>
+        <li>Items can be sold across multiple sales</li>
+      </ul>
+    </div>
+    <div class="shot phone">
+      <img loading="lazy" src="img/detail.jpg" width="720" height="1564"
+           alt="Sold product detail showing +$280 profit, revenue, cost and 140% ROI">
+    </div>
+  </section>
+
+  <section class="feature">
+    <div class="copy">
+      <div class="kicker">This month</div>
+      <h2>Your month, in full</h2>
+      <p>Tap the summary card anywhere and get the whole picture: this month's
+      profit against last month, a 12-month growth chart, every item sold this
+      month, and where your stock stands.</p>
+      <ul>
+        <li>Month-over-month growth at a glance</li>
+        <li>Every sale this month, one tap from its details</li>
+        <li>Stock value, YTD and all-time profit</li>
+      </ul>
+    </div>
+    <div class="shot phone">
+      <img loading="lazy" src="img/summary.jpg" width="720" height="1564"
+           alt="Monthly summary screen with this month's profit, a growth bar chart and the list of items sold this month">
+    </div>
+  </section>
+
+  <section class="feature">
+    <div class="copy">
+      <div class="kicker">Reports</div>
+      <h2>Reports that answer real questions</h2>
+      <p>Sell-through rate, average profit per item, time to sell, profit by
+      month, year and category, top products — and every chart bar taps through
+      to the exact items behind the number.</p>
+      <ul>
+        <li>Overview, yearly and monthly scopes</li>
+        <li>Tap any bar to see its items</li>
+        <li>GST flags recorded for tax time</li>
+      </ul>
+    </div>
+    <div class="shot phone">
+      <img loading="lazy" src="img/reports.jpg" width="720" height="1564"
+           alt="Reports screen with KPI tiles for sell-through, total spent, average profit and time to sell, plus a 12-month profit chart">
+    </div>
+  </section>
+
+  <section class="feature">
+    <div class="copy">
+      <div class="kicker">Add</div>
+      <h2>Add items in seconds</h2>
+      <p>Name, price, a couple of taps for category and platform, photos straight
+      from your library — up to 20 per item, downloaded from iCloud in the
+      background while you keep typing.</p>
+      <ul>
+        <li>Up to 20 photos per item, first is the cover</li>
+        <li>Buy fees and GST captured at purchase</li>
+        <li>Record a same-day sale right on the form</li>
+      </ul>
+    </div>
+    <div class="shot phone">
+      <img loading="lazy" src="img/add.jpg" width="720" height="1564"
+           alt="Add Product form with photo picker, name field and category chips">
+    </div>
+  </section>
+
+  <section class="ipad-band">
+    <h2>Made for iPad too</h2>
+    <p>The same library, reports and summaries — spread out across the big
+    screen. One purchase, every device, always in sync.</p>
+    <img loading="lazy" src="img/ipad-library.jpg" width="1100" height="1466"
+         alt="SoldFor on iPad: a five-column product grid with the monthly summary card on top">
+  </section>
+
+  <section class="privacy-band" id="privacy">
+    <h2>Your business is nobody's business</h2>
+    <p>SoldFor collects <strong>nothing</strong>. Your items, prices and photos live on
+    your devices and in your personal iCloud — the developer can't see them,
+    and no one else can either.</p>
+    <div class="privacy-points">
+      <div>
+        <span class="emoji">🔒</span>
+        <h3>No accounts</h3>
+        <p>Nothing to sign up for. Open the app and start tracking.</p>
+      </div>
+      <div>
+        <span class="emoji">☁️</span>
+        <h3>Your iCloud only</h3>
+        <p>Sync uses Apple's private CloudKit database under your Apple ID.</p>
+      </div>
+      <div>
+        <span class="emoji">🚫</span>
+        <h3>No tracking</h3>
+        <p>No analytics, no ads, no third-party code. Ever.</p>
+      </div>
+    </div>
+    <p style="margin-top:26px"><a href="privacy.html">Read the full privacy policy →</a></p>
+  </section>
+
+  <section class="support" id="support">
+    <h2>Support</h2>
+    <p>Questions, feedback or trouble with SoldFor? We'll get back to you promptly.</p>
+    <a class="mail" href="mailto:yuan@633933.xyz">📮 yuan@633933.xyz</a>
   </section>
 </main>
 
