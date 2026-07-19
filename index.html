@@ -61,11 +61,8 @@
     max-width: 620px; margin-left: auto; margin-right: auto;
   }
   .hero .meta { margin-top: 14px; font-size: 15px; opacity: 0.85; }
-  .store-pill {
-    display: inline-flex; align-items: center; gap: 8px;
-    margin-top: 22px; padding: 11px 22px; border-radius: 999px;
-    background: rgba(0,0,0,0.28); color: #fff; font-weight: 600; font-size: 15px;
-  }
+  .store-badge { display: inline-block; margin-top: 24px; }
+  .store-badge img { height: 56px; width: auto; }
   .hero-phone {
     width: min(310px, 78vw); margin: 44px auto -120px;
   }
@@ -175,7 +172,10 @@
   <h1>SoldFor</h1>
   <p class="tagline">The ledger for your reselling side hustle.<br>Buy. Sell. Know your profit.</p>
   <p class="meta">For iPhone &amp; iPad · Private iCloud sync · No accounts, no ads</p>
-  <div class="store-pill">📱 Coming soon to the App&nbsp;Store</div>
+  <a class="store-badge" href="https://apps.apple.com/app/id6791884849">
+    <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us"
+         alt="Download on the App Store">
+  </a>
   <div class="hero-phone phone">
     <img src="img/library.jpg" width="720" height="1564"
          alt="SoldFor Library screen: a grid of product cards with prices, statuses and profit chips, topped by a monthly profit summary card">
@@ -345,6 +345,7 @@
 
 <footer>
   <p>
+    <a href="https://apps.apple.com/app/id6791884849">App Store</a> ·
     <a href="privacy.html">Privacy Policy</a> ·
     <a href="mailto:yuan@633933.xyz">Contact</a>
   </p>
