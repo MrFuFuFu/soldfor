@@ -8,6 +8,9 @@
 <meta property="og:title" content="SoldFor — Resale Profit Tracker">
 <meta property="og:description" content="Buy. Sell. Know your profit. The ledger for your reselling side hustle.">
 <meta property="og:image" content="https://mrfufufu.github.io/soldfor/img/library.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="img/favicon-192.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <style>
   :root {
     --sky-top: #57B5FF;
@@ -50,10 +53,10 @@
     color: #fff; text-align: center; padding: 72px 24px 0;
     overflow: hidden;
   }
-  .tag {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 84px; height: 84px; border-radius: 21px;
-    background: rgba(255,255,255,0.18); font-size: 42px; margin-bottom: 18px;
+  .app-icon {
+    width: 96px; height: 96px; margin: 0 auto 20px;
+    border-radius: 22.4%;  /* iOS icon squircle proportion */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.28), 0 0 0 1px rgba(255,255,255,0.25);
   }
   .hero h1 { font-size: 48px; font-weight: 800; letter-spacing: -0.5px; }
   .hero p.tagline {
@@ -168,7 +171,8 @@
 <body>
 
 <div class="hero">
-  <div class="tag" aria-hidden="true">🏷️</div>
+  <img class="app-icon" src="img/app-icon.png" width="360" height="360"
+       alt="SoldFor app icon: a white price tag with a dollar sign on a sky-blue gradient">
   <h1>SoldFor</h1>
   <p class="tagline">The ledger for your reselling side hustle.<br>Buy. Sell. Know your profit.</p>
   <p class="meta">For iPhone &amp; iPad · Private iCloud sync · No accounts, no ads</p>
